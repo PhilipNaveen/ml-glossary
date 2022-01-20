@@ -240,6 +240,38 @@ Therefore, in practice the tanh non-linearity is always preferred to the sigmoid
 
 - Tanh also has the vanishing gradient problem.
 
+.. _activation_mish:
+
+Mish
+====
+
+Mish is a new non-monotonic and self-regulated activation function. It is also non-linear. It has been shown to outperform
+ReLU and Swish in large deep-learning models.
+
++-----------------------------------------------------+-----------------------------------------------------+
+| Function                                            | Derivative                                          |
++-----------------------------------------------------+-----------------------------------------------------+
+| .. math::                                           | .. math::                                           |
+|      mish(z) = ztanh(softplus(z))                   |      mish/z + ztanh'(softplus(z))softplus'(z)       |
++-----------------------------------------------------+-----------------------------------------------------+
+| .. image:: images/mish.png                          | .. image:: images/mish_prime.png                    |
+|       :align: center                                |       :align: center                                |
+|       :width: 256 px                                |       :width: 256 px                                |
++-----------------------------------------------------+-----------------------------------------------------+
+| .. literalinclude:: ../code/activation_functions.py | .. literalinclude:: ../code/activation_functions.py |
+|       :pyobject: mish                               |       :pyobject: mish_prime                         |
++-----------------------------------------------------+-----------------------------------------------------+
+
+.. quick create tables with tablesgenerator.com/text_tables and import our premade template in figures/
+
+.. rubric:: Pros
+
+- The gradient is stronger for tanh than sigmoid ( derivatives are steeper).
+
+.. rubric:: Cons
+
+- Tanh also has the vanishing gradient problem.
+
 
 Softmax
 =======
